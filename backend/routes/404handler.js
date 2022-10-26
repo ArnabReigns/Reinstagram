@@ -10,7 +10,7 @@ var html =
 
 
 router.get('*', function(req, res){
-    res.send(html,404)
+    res.send(html)
   });
 
 

@@ -1,11 +1,12 @@
 import { useState,useEffect } from 'react'
-import Home from './pages/Home';
-import Accounts from './pages/Accounts';
+import Start from './pages/Start';
+import Accounts from './components/Accounts';
 import {
   BrowserRouter as Router,
   Routes,
   Route,
-  Link
+  Link,
+  Navigate
 } from "react-router-dom";
 
 function App() {
@@ -14,8 +15,7 @@ function App() {
     <div className="App">
       <Router>
         <Routes>
-          <Route exact path='/' element={<Home/>}/>
-          <Route path='register/' element={<Accounts/>}/>
+          <Route exact path='/' element={<Start/>}/>
         </Routes>
       </Router>
     </div>
