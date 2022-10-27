@@ -1,7 +1,8 @@
 const express = require("express");
 const router = express.Router();
 
-const {UserModel} = require('../models/UserModel')
+const {UserModel} = require('../models/UserModel');
+const { UserSerializer } = require("../serializer/UserSerializer");
 
 router.get('/get',(req,res)=>{
 
@@ -19,7 +20,7 @@ router.post('/login',(req,res)=>{
         {
             if(user.password === req.body.password)
             {
-                res.cookie("loggedin","true",{sameSite:"none",secure:true}).send("Successfully logged in");
+                res.cookie("loggedin",user.username,{httpOnly:true,sameSite:"none",secure:true,signed:true}).json(UserSerializer(user));
                 
             }
             else 
@@ -33,7 +34,8 @@ router.post('/login',(req,res)=>{
                 {
                     if(user.password === req.body.password)
                     {
-                        res.cookie("loggedin","true",{sameSite:"none",secure:true}).send("Successfully logged in");
+                        res.cookie("loggedin",user.username,{httpOnly:true,sameSite:"none",secure:true,signed:true}).json(UserSerializer(user));
+                        console.log(user)
                         
                     }
                     else 
@@ -48,6 +50,16 @@ router.post('/login',(req,res)=>{
         }``
     })
     .catch(err=> {console.log(err); res.status(400).send(err)})
+})
+
+router.get('/currentUser',(req,res)=>{
+
+    if(req.user) res.send(req.user);
+    else res.status(401).json({message:"Unautherised"})
+})
+
+router.get('/logout',(req,res)=>{
+    res.cookie("loggedin","").send("Logged Out");
 })
 
 

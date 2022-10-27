@@ -16,10 +16,10 @@ const LoginForm = (props) => {
       email:email,
       password:password
     }).then(res=>{
-      console.log(res)
-      props.setAuth(true)
+      
+      props.setUser(res.data)
     })
-    .catch(err=>console.log(err.response))
+    .catch(err=>console.log(err))
   }
 
 

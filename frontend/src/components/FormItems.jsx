@@ -4,11 +4,12 @@ import styled from 'styled-components'
 
 const Container = styled.form`
   display:flex;
-  justify-content:center;
+  justify-content:flex-start;
   align-items:center;
   flex-direction:column;
   font-family:'Titillium Web';
-  height:100vh;
+  height:100%;
+  min-height: 100vh;
   width: 100vw;
   background-color: #4158D0;
   background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
@@ -48,6 +49,7 @@ const Button = styled.button`
 const Title = styled.h1`
 
   color: white;
+  margin: 5rem 0 3rem 0;
 
 `
 

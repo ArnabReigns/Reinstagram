@@ -6,7 +6,7 @@ import {Title, Container} from './FormItems';
 
 
 
-const Accounts = ({setAuth}) => {
+const Accounts = (props) => {
 
   const [signin,setSignin] = useState(true)
 
@@ -16,7 +16,7 @@ const Accounts = ({setAuth}) => {
       
       <Container autoComplete='off' onSubmit={e=> e.preventDefault()}>
         <Title>RINSTAGRAM</Title>
-        {signin ?  <LoginForm setAuth={setAuth} setSignin={setSignin}/> : <SignUpForm setAuth={setAuth} setSignin={setSignin}/>}
+        {signin ?  <LoginForm setUser={props.setUser} user={props.user} setAuth={props.setAuth} setSignin={setSignin}/> : <SignUpForm setAuth={props.setAuth} setSignin={setSignin}/>}
       </Container>
     
     </>

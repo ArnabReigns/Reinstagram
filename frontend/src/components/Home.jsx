@@ -1,16 +1,24 @@
-import React from 'react'
+import {useEffect} from 'react'
 import Cookies from 'js-cookie'
+import Navbar from './Navbar';
+import api from '../API';
 
-const Home = ({setAuth}) => {
+const Home = (props) => {
+
   
+
   function logout()
   {
-    Cookies.remove("loggedin")
-    setAuth(false);
+    api.get("logout");
+    props.setAuth(false);
   }
   
   return (
-    <button onClick={logout}>Logout</button>
+    <div className='container vh-100 vw-100 p-3'>
+      <Navbar user={props.user} Logout={logout}/>
+      {props.a && <h1>Hiii</h1>}
+    </div>
+
   )
 }
 
