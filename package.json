@@ -1,0 +1,13 @@
+{
+  "name": "rinstagram",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "f": "cd ./frontend && npm run dev",
+    "b": "cd ./backend && npm run dev"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

@@ -1,0 +1,22 @@
+{
+    "usermodel" : {
+        "name":"full name",
+        "email":"unique email",
+        "username":"unique useremail",
+        "password":"hashed password",
+        "ImgUri" : "profile image url",
+        "bio":"person's bio",
+        
+        "posts":[{
+            "id":"unique id like : username-post-1",
+            "images":["link1","link2","link3"],
+            "caption":"caption string",
+            "comments":[
+                {"user":"username", "comment":"beautiful pics"},
+                {"user":"username", "comment":"beautiful pics"}
+            ]
+        }],
+
+        "friends":["username1","username2"]
+    }
+}

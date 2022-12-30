@@ -16,7 +16,7 @@ const Accounts = (props) => {
       
       <Container autoComplete='off' onSubmit={e=> e.preventDefault()}>
         <Title>RINSTAGRAM</Title>
-        {signin ?  <LoginForm setUser={props.setUser} user={props.user} setAuth={props.setAuth} setSignin={setSignin}/> : <SignUpForm setAuth={props.setAuth} setSignin={setSignin}/>}
+        {signin ?  <LoginForm setUser={props.setUser} user={props.user} setSignin={setSignin}/> : <SignUpForm setAuth={props.setAuth} setSignin={setSignin}/>}
       </Container>
     
     </>

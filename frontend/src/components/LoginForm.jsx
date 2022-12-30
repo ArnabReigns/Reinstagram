@@ -12,7 +12,7 @@ const LoginForm = (props) => {
     var email = emailRef.current.value;
     var password = passwordRef.current.value;
 
-    api.post('login',{
+    api.post('account/login',{
       email:email,
       password:password
     }).then(res=>{

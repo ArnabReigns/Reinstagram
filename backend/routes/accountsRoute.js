@@ -1,12 +1,12 @@
 const express = require("express");
 const router = express.Router();
 
-const {UserModel} = require('../models/UserModel');
+const {UserModel} = require('../models/Model');
 const { UserSerializer } = require("../serializer/UserSerializer");
 
 router.get('/get',(req,res)=>{
 
-    UserModel.find({},'-_id -__v').sort([['age',-1]]).then(user=> res.send(user))
+    UserModel.find({},'-__v').sort([['age',-1]]).then(user=> res.send(user))
 
 })
 
@@ -20,7 +20,7 @@ router.post('/login',(req,res)=>{
         {
             if(user.password === req.body.password)
             {
-                res.cookie("loggedin",user.username,{httpOnly:true,sameSite:"none",secure:true,signed:true}).json(UserSerializer(user));
+                res.cookie("loggedin",user.username,{httpOnly:true,sameSite:"none",secure:true,signed:true,maxAge:604800000}).send(UserSerializer(user));
                 
             }
             else 
@@ -34,7 +34,7 @@ router.post('/login',(req,res)=>{
                 {
                     if(user.password === req.body.password)
                     {
-                        res.cookie("loggedin",user.username,{httpOnly:true,sameSite:"none",secure:true,signed:true}).json(UserSerializer(user));
+                        res.cookie("loggedin",user.username,{httpOnly:true,sameSite:"none",secure:true,signed:true,maxAge:604800000}).send(UserSerializer(user));
                         console.log(user)
                         
                     }
@@ -62,7 +62,6 @@ router.get('/logout',(req,res)=>{
     res.cookie("loggedin","").send("Logged Out");
 })
 
-
 router.route('/register')
 .post((req,res)=>{
     var user = new UserModel(req.body);
@@ -84,6 +83,15 @@ router.route('/register')
     }
     )
 })
+
+
+router.get('/profile/:username', (req, res)=>{
+    console.log(req.params);
+    UserModel.findOne({username: req.params.username}).then(user=>{
+        res.send(user);
+        console.log(user)
+    }).catch(err=>{console.log(err)}); 
+  });
 
 
 module.exports = router;

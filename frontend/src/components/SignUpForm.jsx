@@ -14,7 +14,7 @@ const SignUpForm = ({setSignin,setAuth}) => {
   {
     if(passwordRef.current.value !== cPasswordRef.current.value) console.log("passwords not matching!")
     else {
-      api.post('register',{
+      api.post('account/register',{
       name: nameRef.current.value,
       email: emailRef.current.value,
       username: usernameRef.current.value,

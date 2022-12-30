@@ -1,22 +1,33 @@
-import {useEffect} from 'react'
-import Cookies from 'js-cookie'
+import {useState,useEffect, useContext} from 'react'
 import Navbar from './Navbar';
 import api from '../API';
+import PostView from './PostView';
+import { UserContext } from '../context/UserContext';
 
-const Home = (props) => {
+const Home = () => {
 
-  
+  const [posts,SetPosts] = useState([])
+  const user = useContext(UserContext)
 
-  function logout()
-  {
-    api.get("logout");
-    props.setAuth(false);
-  }
+
+  useEffect(()=>{
+    api.get("post/get").then(res=>{
+      SetPosts(res.data)
+    })
+  })
+
+
   
   return (
-    <div className='container vh-100 vw-100 p-3'>
-      <Navbar user={props.user} Logout={logout}/>
-      {props.a && <h1>Hiii</h1>}
+    <div className='container-fluid vh-100' style={{position:"relative",paddingTop:"5rem",width:"100%"}}>
+      <Navbar/>
+      
+      <div className='container mt-5' style={{width:'50rem'}}>
+          
+          {posts.map( (post,index)=> (<PostView user={user.state} key={index} post={post}/>))}
+
+      </div>
+
     </div>
 
   )

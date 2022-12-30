@@ -1,0 +1,24 @@
+UserModel : 	
+{ 
+id : index,
+name,
+username : uique,
+email : unique , 
+password 
+bio,
+posts :{
+	 id<unique> : {
+		 images : [ link, link ], caption , date_added, tags[ username, username ] 
+			} , . . . 
+	} ,
+friends : [ username, username, username ] ,
+
+ 
+
+
+
+
+} 
+
+
+	

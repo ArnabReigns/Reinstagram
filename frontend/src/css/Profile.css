@@ -1,0 +1,48 @@
+.main 
+{
+    min-height: 100vh;
+    width: 100vw;
+    padding:3rem 5rem;
+}
+
+.hero 
+{
+    margin-top: 5rem;
+    width: 70vw;
+    border-radius: 10px;
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.393);
+    display: flex;
+    align-items: flex-start ;
+    padding: 2rem;
+    /* border: 1px solid seagreen; */
+}
+
+.ProfileIcon
+{
+    width: 10rem !important;
+    height: 10rem !important;
+}
+
+.header 
+{
+        padding: 1rem;
+        padding-left: 2rem;
+        /* border-left: 1px solid seagreen; */
+}
+
+.header h2 
+{
+    font-weight: 600;
+}
+.header h4 
+{
+    font-weight: 400;
+    color: gray;
+    font-size: 1.2rem;
+    font-family: 'Roboto';
+    margin-bottom: 1rem;
+}
+.header p 
+{
+    font-size: 1rem;
+}
